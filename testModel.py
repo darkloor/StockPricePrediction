@@ -21,7 +21,7 @@ def plot_graph(test_df):
     """
     plt.plot(test_df[f'true_adjclose_{LOOKUP_STEP}'], c='b')
     plt.plot(test_df[f'adjclose_{LOOKUP_STEP}'], c='r')
-    plt.xlabel("Days")
+    plt.xlabel("Years")
     plt.ylabel("Price")
     plt.legend(["Actual Price", "Predicted Price"])
     plt.show()
@@ -100,14 +100,14 @@ model = create_model(N_STEPS, len(FEATURE_COLUMNS), loss=LOSS, units=UNITS, cell
                     dropout=DROPOUT, optimizer=OPTIMIZER, bidirectional=BIDIRECTIONAL)
 
 # load optimal model weights from results folder
-model_path = os.path.join("results", "2021-10-27_BTC-USD-sh-1-sc-1-sbd-0-huber_loss-adam-LSTM-seq-50-step-15-layers-2-units-256") + ".h5"
+model_path = os.path.join("results", "2021-11-06_BTC-USD-sh-1-sc-1-sbd-0-huber_loss-adam-LSTM-seq-50-step-15-layers-2-units-256") + ".h5"
 model.load_weights(model_path)
 
 
 # Amazon stock market
 ticker = "BTC-USD"
 #date_now = time.strftime("%Y-%m-%d")
-date_now="2021-10-27"
+date_now="2021-11-06"
 # print("Date now ===> ",date_now)
 # exit
 ticker_data_filename = os.path.join("data", f"{ticker}_{date_now}.csv")
@@ -157,5 +157,15 @@ print("Total sell profit:", total_sell_profit)
 print("Total profit:", total_profit)
 print("Profit per trade:", profit_per_trade)
 
+print(final_df.tail(10))
+# save the final dataframe to csv-results folder
+csv_results_folder = "csv-results"
+if not os.path.isdir(csv_results_folder):
+    os.mkdir(csv_results_folder)
+csv_filename = os.path.join(csv_results_folder, "model" + ".csv")
+final_df.to_csv(csv_filename)
+
 # plot true/pred prices graph
 plot_graph(final_df)
+
+
