@@ -60,13 +60,14 @@ LOSS = "huber_loss"
 OPTIMIZER = "adam"
 BATCH_SIZE = 64
 
-EPOCHS = 5 # WAS SET TO 500
+EPOCHS = 50 # WAS SET TO 500
 
 # Amazon stock market
-ticker = "AMZN"
+ticker = "BTC-USD"
 
-#date_now = time.strftime("%Y-%m-%d")
-date_now="2021-10-22"
+date_now = time.strftime("%Y-%m-%d")
+#date_now="2021-10-22"
+#date_now="2021-10-27" # 3 days after for the lookup step of 15
 
 ticker_data_filename = os.path.join("data", f"{ticker}_{date_now}.csv")
 # model name to save, making it as unique as possible based on parameters
