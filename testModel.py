@@ -4,6 +4,9 @@ from tensorflow.keras.layers import LSTM
 import os
 import time
 
+from LoadTheData import load_data
+from CreateTheModel import create_model
+
 # Window size or the sequence length
 N_STEPS = 50
 # Lookup step, 1 is the next day
@@ -84,8 +87,6 @@ def predict(model, data):
 
 
 
-from CreateTheModel import create_model
-
 FEATURE_COLUMNS = ["adjclose", "volume", "open", "high", "low"]
 LOSS = "huber_loss"
 UNITS = 256 # 256 LSTM neurons
@@ -101,9 +102,8 @@ model = create_model(N_STEPS, len(FEATURE_COLUMNS), loss=LOSS, units=UNITS, cell
 # load optimal model weights from results folder
 model_path = os.path.join("results", "2021-11-05_AMZN-sh-1-sc-1-sbd-0-huber_loss-adam-LSTM-seq-50-step-15-layers-2-units-256") + ".h5"
 model.load_weights(model_path)
-# model.load_weights('savedModel')
 
-from LoadTheData import load_data
+
 # Amazon stock market
 ticker = "AMZN"
 date_now = time.strftime("%Y-%m-%d")
