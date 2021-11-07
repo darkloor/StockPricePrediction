@@ -21,8 +21,11 @@ def plot_graph(test_df):
     """
     plt.plot(test_df[f'true_adjclose_{LOOKUP_STEP}'], c='b')
     plt.plot(test_df[f'adjclose_{LOOKUP_STEP}'], c='r')
-    plt.xlabel("Years")
-    plt.ylabel("Price")
+    plt.grid()
+    plt.title("Bitcoin Prediction")
+    #plt.axis()
+    plt.xlabel("Year")
+    plt.ylabel("Price ($)")
     plt.legend(["Actual Price", "Predicted Price"])
     plt.show()
 
@@ -106,8 +109,8 @@ model.load_weights(model_path)
 
 # Amazon stock market
 ticker = "BTC-USD"
-#date_now = time.strftime("%Y-%m-%d")
-date_now="2021-11-06"
+date_now = time.strftime("%Y-%m-%d")
+#date_now="2021-11-06"
 # print("Date now ===> ",date_now)
 # exit
 ticker_data_filename = os.path.join("data", f"{ticker}_{date_now}.csv")

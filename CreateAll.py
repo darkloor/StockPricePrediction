@@ -63,7 +63,7 @@ BATCH_SIZE = 64
 EPOCHS = 50 # WAS SET TO 500
 
 # Amazon stock market
-ticker = "BTC-USD"
+ticker = "DOGE-USD"
 
 date_now = time.strftime("%Y-%m-%d")
 #date_now="2021-10-22"

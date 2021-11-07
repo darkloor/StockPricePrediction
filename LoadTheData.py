@@ -43,8 +43,8 @@ def load_data(ticker, n_steps=50, scale=True, shuffle=True, lookup_step=1, split
     # see if ticker is already a loaded stock from yahoo finance
     if isinstance(ticker, str):
         # load it from yahoo_fin library
-        # df = si.get_data(ticker, start_date="2021-10-15", end_date="2021-10-29") # 3 days after for the lookup step of 15
-        df = si.get_data(ticker)
+        df = si.get_data(ticker, start_date=None, end_date="2021-11-5") # 3 days after for the lookup step of 15
+        # df = si.get_data(ticker)
     elif isinstance(ticker, pd.DataFrame):
         # already loaded, use it directly
         df = ticker
