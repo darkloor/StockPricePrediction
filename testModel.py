@@ -103,12 +103,12 @@ model = create_model(N_STEPS, len(FEATURE_COLUMNS), loss=LOSS, units=UNITS, cell
                     dropout=DROPOUT, optimizer=OPTIMIZER, bidirectional=BIDIRECTIONAL)
 
 # load optimal model weights from results folder
-model_path = os.path.join("results", "2021-11-06_BTC-USD-sh-1-sc-1-sbd-0-huber_loss-adam-LSTM-seq-50-step-15-layers-2-units-256") + ".h5"
+model_path = os.path.join("results", "2021-11-06_DOGE-USD-sh-1-sc-1-sbd-0-huber_loss-adam-LSTM-seq-50-step-15-layers-2-units-256") + ".h5"
 model.load_weights(model_path)
 
 
 # Amazon stock market
-ticker = "BTC-USD"
+ticker = "DOGE-USD"
 date_now = time.strftime("%Y-%m-%d")
 #date_now="2021-11-06"
 # print("Date now ===> ",date_now)
